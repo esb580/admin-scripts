@@ -40,6 +40,7 @@ def selRemoveAllContainers():
     else:
         print('An Error Occurred Removing All Containers')
  
+
 def selRemoveAllImages():
     aLabel.configure(text="Removing All Images")
     p.run(['echo',\
@@ -49,20 +50,27 @@ def selRemoveAllImages():
     try:
         p.run(l3)
     except FileNotFoundError:
-        print('FileNotFoundError: Is docker installed')
+        print('FileNotFoundError: Is docker installed?')
     else:
         print('An Error Occurred Images All Containers')
   
+
+def radCall():
+    radSel=radVar.get()
+    if   radSel == 1: selStopAllContainers
+    elif radSel == 2: selRemoveAllContainers 
+    elif radSel == 3: selRemoveAlContainers
+    
 var = tk.IntVar()
 R1 = ttk.Radiobutton(win, text="Stop All Containers",\
-        variable=var, value=1, command=selStopAllContainers)
-R1.grid(column=1, row=1)
+        variable=var, value=1, command=radCall)
+R1.grid(column=1, row=1, sticky=tk.W)
 R2 = ttk.Radiobutton(win, text="Remove All Containers",\
-        variable=var, value=2, command=selRemoveAllContainers)
-R2.grid(column=1, row=2)
+        variable=var, value=2, command=radCall)
+R2.grid(column=1, row=2, sticky=tk.W)
 R3 = ttk.Radiobutton(win, text="Remove All Images",\
-        variable=var, value=3, command=selRemoveAllImages)
-R3.grid(column=1, row=3)
+        variable=var, value=3, command=radCall)
+R3.grid(column=1, row=3, sticky=tk.W)
 
 win.mainloop()
 
