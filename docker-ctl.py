@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+###############################################################################
+#Description: [WARNING]This stops and removes ALL docker images and containers.
+#  Make sure you want to do this before you mess with it, because it is armed.
+#  It is good for dropping and clearing my development machine. 
+###############################################################################
 import subprocess as p
 import tkinter as tk
 from tkinter import ttk
@@ -17,9 +22,9 @@ def selStopAllContainers():
     try:
         p.run(l1)
     except FileNotFoundError:
-        print('FileNotFoundError')
+        print('FileNotFoundError: Is docker installed?')
     else:
-        print('An Error Occurred Removing All Containers')
+        print('An Error Occurred Stop All Containers')
          
 
 def selRemoveAllContainers():
@@ -31,7 +36,7 @@ def selRemoveAllContainers():
     try:
         p.run(l2)
     except FileNotFoundError:
-        print('FileNotFoundError')
+        print('FileNotFoundError: Is docker installed?')
     else:
         print('An Error Occurred Removing All Containers')
  
@@ -44,9 +49,9 @@ def selRemoveAllImages():
     try:
         p.run(l3)
     except FileNotFoundError:
-        print('FileNotFoundError')
+        print('FileNotFoundError: Is docker installed')
     else:
-        print('An Error Occurred Removing All Containers')
+        print('An Error Occurred Images All Containers')
   
 var = tk.IntVar()
 R1 = ttk.Radiobutton(win, text="Stop All Containers",\
